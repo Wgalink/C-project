@@ -6,3 +6,11 @@ C:\Users\user\Documents\Ludique\project\Achille\Cproject\obj\Debug\net8.0\iBay.c
 C:\Users\user\Documents\Ludique\project\Achille\Cproject\obj\Debug\net8.0\iBay.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\user\Documents\Ludique\project\Achille\Cproject\obj\Debug\net8.0\iBay.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\user\Documents\Ludique\project\Achille\Cproject\obj\Debug\net8.0\iBay.sourcelink.json
+C:\Users\naime\Documents\GitHub\Cproject\obj\Debug\net8.0\iBay.csproj.AssemblyReference.cache
+C:\Users\naime\Documents\GitHub\Cproject\obj\Debug\net8.0\iBay.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\naime\Documents\GitHub\Cproject\obj\Debug\net8.0\iBay.AssemblyInfoInputs.cache
+C:\Users\naime\Documents\GitHub\Cproject\obj\Debug\net8.0\iBay.AssemblyInfo.cs
+C:\Users\naime\Documents\GitHub\Cproject\obj\Debug\net8.0\iBay.csproj.CoreCompileInputs.cache
+C:\Users\naime\Documents\GitHub\Cproject\obj\Debug\net8.0\iBay.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\naime\Documents\GitHub\Cproject\obj\Debug\net8.0\iBay.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\naime\Documents\GitHub\Cproject\obj\Debug\net8.0\iBay.sourcelink.json

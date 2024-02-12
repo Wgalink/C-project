@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\user\\Documents\\Ludique\\project\\Achille\\Cproject\\iBay.csproj": {}
+    "C:\\Users\\naime\\Documents\\GitHub\\Cproject\\iBay.csproj": {}
   },
   "projects": {
-    "C:\\Users\\user\\Documents\\Ludique\\project\\Achille\\Cproject\\iBay.csproj": {
+    "C:\\Users\\naime\\Documents\\GitHub\\Cproject\\iBay.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\user\\Documents\\Ludique\\project\\Achille\\Cproject\\iBay.csproj",
+        "projectUniqueName": "C:\\Users\\naime\\Documents\\GitHub\\Cproject\\iBay.csproj",
         "projectName": "iBay",
-        "projectPath": "C:\\Users\\user\\Documents\\Ludique\\project\\Achille\\Cproject\\iBay.csproj",
-        "packagesPath": "C:\\Users\\user\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\user\\Documents\\Ludique\\project\\Achille\\Cproject\\obj\\",
+        "projectPath": "C:\\Users\\naime\\Documents\\GitHub\\Cproject\\iBay.csproj",
+        "packagesPath": "C:\\Users\\naime\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\naime\\Documents\\GitHub\\Cproject\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\user\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\naime\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"

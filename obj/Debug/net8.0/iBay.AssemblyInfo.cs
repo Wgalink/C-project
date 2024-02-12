@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("iBay")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+89957dea57d0911a9f6be868a233a85b344b96bc")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+99017f5bfa1e2d400b8f19e44e6801f8023356ff")]
 [assembly: System.Reflection.AssemblyProductAttribute("iBay")]
 [assembly: System.Reflection.AssemblyTitleAttribute("iBay")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
