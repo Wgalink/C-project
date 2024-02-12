@@ -1,0 +1,18 @@
+version: '3.1'
+
+services:
+  mariadb:
+    image: mariadb:latest
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: ibaydb
+      MYSQL_USER: ibayuser
+      MYSQL_PASSWORD: ibaypassword
+    ports:
+      - "3306:3306"
+    volumes:
+      - ibaydb:/var/lib/mysql
+
+volumes:
+  ibaydb:

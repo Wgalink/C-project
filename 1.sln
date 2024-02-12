@@ -1,0 +1,30 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.002.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "iBay", "iBay", "{214EEA19-AF8F-4803-9FE6-1BA01FE70B1D}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "iBay", "iBay\iBay\iBay.csproj", "{E0A487B2-4DEF-4661-8C3E-02D24189B748}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E0A487B2-4DEF-4661-8C3E-02D24189B748}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E0A487B2-4DEF-4661-8C3E-02D24189B748}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E0A487B2-4DEF-4661-8C3E-02D24189B748}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E0A487B2-4DEF-4661-8C3E-02D24189B748}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{E0A487B2-4DEF-4661-8C3E-02D24189B748} = {214EEA19-AF8F-4803-9FE6-1BA01FE70B1D}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {20F6B170-4551-4955-A6EB-6F30CF365531}
+	EndGlobalSection
+EndGlobal
