@@ -1,50 +1,50 @@
 using Microsoft.EntityFrameworkCore;
 using Cproject.Entities.Models;
-using Cproject.Entities.Context;
+using Cproject.Context;
 
-namespace Cproject.Entities.Service
+namespace Cproject.Entities.Services
 {
-    public class ProductService(DbContext ctx):IBasicService<Product>
+    public class ProductService(iBayDbContext ctx):IBasicService<Product>
 
     {
         public Product GetById(Guid id)
         {
-            return ctx.Products.SingleOrDefault(t => t.Id == id);
+            return ctx.Product.SingleOrDefault(t => t.Id == id);
         }
 
         public async Task<Product> GetByIdAsync(Guid id)
         {
-            return await ctx.Products.SingleOrDefaultAsync(t => t.Id == id);
+            return await ctx.Product.SingleOrDefaultAsync(t => t.Id == id);
         }
 
         public List<Product> GetAll()
         {
-            return ctx.Products!.ToList();
+            return ctx.Product!.ToList();
         }
 
         public async Task<List<Product>> GetAllAsync()
         {
-            return await ctx.Products!.ToListAsync();
+            return await ctx.Product!.ToListAsync();
         }
 
         public void Add(Product entity)
         {
-            ctx.Products?.Add(entity);
+            ctx.Product?.Add(entity);
         }
 
         public async Task AddAsync(Product entity)
         {
-            await ctx.Products.AddAsync(entity);
+            await ctx.Product.AddAsync(entity);
         }
 
         public void Update(Product entity)
         {
-            ctx.Products?.Update(entity);
+            ctx.Product?.Update(entity);
         }
 
         public void DeleteById(Guid id)
         {
-            ctx.Products?.Remove(GetById(id));
+            ctx.Product?.Remove(GetById(id));
         }
 
         public void SaveChanges()

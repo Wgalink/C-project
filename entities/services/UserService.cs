@@ -1,50 +1,50 @@
 using Microsoft.EntityFrameworkCore;
 using Cproject.Entities.Models;
-using Cproject.Entities.Context;
+using Cproject.Context;
 
-namespace Cproject.Entities.Service
+namespace Cproject.Entities.Services
 {
-    public class UserService(DbContext ctx):IBasicService<User>
+    public class UserService(iBayDbContext ctx):IBasicService<User>
 
     {
         public User GetById(Guid id)
         {
-            return ctx.Users.SingleOrDefault(t => t.Id == id);
+            return ctx.User.SingleOrDefault(t => t.Id == id);
         }
 
         public async Task<User> GetByIdAsync(Guid id)
         {
-            return await ctx.Users.SingleOrDefaultAsync(t => t.Id == id);
+            return await ctx.User.SingleOrDefaultAsync(t => t.Id == id);
         }
 
         public List<User> GetAll()
         {
-            return ctx.Users!.ToList();
+            return ctx.User!.ToList();
         }
 
         public async Task<List<User>> GetAllAsync()
         {
-            return await ctx.Users!.ToListAsync();
+            return await ctx.User!.ToListAsync();
         }
 
         public void Add(User entity)
         {
-            ctx.Users?.Add(entity);
+            ctx.User?.Add(entity);
         }
 
         public async Task AddAsync(User entity)
         {
-            await ctx.Users.AddAsync(entity);
+            await ctx.User.AddAsync(entity);
         }
 
         public void Update(User entity)
         {
-            ctx.Users?.Update(entity);
+            ctx.User?.Update(entity);
         }
 
         public void DeleteById(Guid id)
         {
-            ctx.Users?.Remove(GetById(id));
+            ctx.User?.Remove(GetById(id));
         }
 
         public void SaveChanges()

@@ -1,11 +1,16 @@
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
+using Cproject.Entities.Models;
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
 
 namespace Cproject.WebApi.Midlleware
 {
     public class JwtMiddleware
 {
-    private readonly IConfiguration _configuration;
+    private IConfiguration _configuration;
 
-    public JwtService(IConfiguration configuration)
+    public void JwtService(IConfiguration configuration)
     {
         _configuration = configuration;
     }
@@ -15,8 +20,7 @@ namespace Cproject.WebApi.Midlleware
         var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Jwt:SecretKey"]));
         var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
 
-        var claims = new[]
-        {};
+            var claims = new Claim[0];
 
         var token = new JwtSecurityToken(
             _configuration["Jwt:Issuer"],
@@ -27,35 +31,6 @@ namespace Cproject.WebApi.Midlleware
         );
 
         return new JwtSecurityTokenHandler().WriteToken(token);
-    }
-
-    public ClaimsPrincipal GetPrincipalFromExpiredToken(string token)
-    {
-        var tokenValidationParameters = new TokenValidationParameters
-        {
-            ValidateIssuerSigningKey = true,
-            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Jwt:SecretKey"])),
-            ValidateIssuer = true,
-            ValidIssuer = _configuration["Jwt:Issuer"],
-            ValidateAudience = true,
-            ValidAudience = _configuration["Jwt:Audience"],
-            ValidateLifetime = false
-        };
-
-        var tokenHandler = new JwtSecurityTokenHandler();
-        ClaimsPrincipal principal = null;
-
-        try
-        {
-            SecurityToken securityToken;
-            principal = tokenHandler.ValidateToken(token, tokenValidationParameters, out securityToken);
-        }
-        catch (SecurityTokenExpiredException)
-        {
-            return BadRequest();
-        }
-
-        return principal;
     }
 }
 }

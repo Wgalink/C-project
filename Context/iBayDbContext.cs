@@ -1,9 +1,9 @@
 using Microsoft.EntityFrameworkCore;
 using Cproject.Entities.Models;
 
-namespace iBayProject.Data
+namespace Cproject.Context
 {
-    public class DbContext(DbContextOptions options) : DbContext(options)
+    public class iBayDbContext(DbContextOptions<iBayDbContext> options) : DbContext(options)
     {
         public DbSet<Product>? Product { get; set; }
         public DbSet<Cart>? Cart { get; set; }
@@ -12,14 +12,14 @@ namespace iBayProject.Data
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<User>()
-                .HasOne(c => c.Cart)
-                .WithOne(t => t.User)
-                .HasForeignKey<Cart>(t => t.UserId);
+                .HasOne(u => u.Cart)
+                .WithOne(c => c.User)
+                .HasForeignKey<Cart>(c => c.UserId);
 
             modelBuilder.Entity<Cart>()
-                .HasMany(c => c.Product)
-                .WithOne(s => s.Cart)
-                .HasForeignKey(s => s.CartId);
+                .HasMany(c => c.Products)
+                .WithOne(p => p.Cart)
+                .HasForeignKey(p => p.CartId);
 
             base.OnModelCreating(modelBuilder);
         }

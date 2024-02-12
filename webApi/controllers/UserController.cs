@@ -1,10 +1,19 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using Cproject.Entities.Services;
 using Cproject.Entities.Models;
+using Cproject.Context;
 
 namespace Cproject.WebApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class PeopleController(DbContext ctx) : ControllerBase
+    public class UserController(iBayDbContext ctx) : ControllerBase
     {
 
         private readonly UserService? _userServ = new(ctx);

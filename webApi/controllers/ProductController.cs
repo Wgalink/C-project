@@ -1,10 +1,20 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using Cproject.Entities.Services;
 using Cproject.Entities.Models;
+using Cproject.Context;
+
 
 namespace Cproject.WebApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class PeopleController(DbContext ctx) : ControllerBase
+    public class ProductController(iBayDbContext ctx) : ControllerBase
     {
 
         private readonly ProductService? _productServ = new(ctx);
@@ -86,14 +96,14 @@ namespace Cproject.WebApi.Controllers
         [HttpPut, Route("/addproducts/{id}/{userId}")]
         public IActionResult AddProductToCart(Guid id,Guid userId)
     {
-        var user = _context.Users.Include(u => u.Cart).FirstOrDefault(u => u.Id == userId);
+        var user = ctx.User.Include(u => u.Cart).FirstOrDefault(u => u.Id == userId);
 
         if (user == null)
         {
             return null;
         }
 
-        var product = _context.Products.Find(id);
+        var product = ctx.Product.Find(id);
 
         if (product == null)
         {
@@ -105,9 +115,9 @@ namespace Cproject.WebApi.Controllers
         }
 
         user.Cart.Products.Add(product);
-        _context.SaveChanges();
+        ctx.SaveChanges();
 
-        return user.Cart;
+        return NoContent();
     }
     }
 }

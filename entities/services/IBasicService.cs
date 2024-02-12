@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Cproject.entities.service
+namespace Cproject.Entities.Services
 {
     public interface IBasicService<T>
     {

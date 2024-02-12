@@ -1,50 +1,52 @@
 using Microsoft.EntityFrameworkCore;
 using Cproject.Entities.Models;
+using Cproject.Context;
+
 
 
 namespace Cproject.Entities.Services
 {
-    public class CartService(DbContext ctx):IBasicService<Cart>
+    public class CartService(iBayDbContext ctx):IBasicService<Cart>
 
     {
         public Cart GetById(Guid id)
         {
-            return ctx.Carts.SingleOrDefault(t => t.Id == id);
+            return ctx.Cart.SingleOrDefault(t => t.Id == id);
         }
 
         public async Task<Cart> GetByIdAsync(Guid id)
         {
-            return await ctx.Carts.SingleOrDefaultAsync(t => t.Id == id);
+            return await ctx.Cart.SingleOrDefaultAsync(t => t.Id == id);
         }
 
         public List<Cart> GetAll()
         {
-            return ctx.Carts!.ToList();
+            return ctx.Cart!.ToList();
         }
 
         public async Task<List<Cart>> GetAllAsync()
         {
-            return await ctx.Carts!.ToListAsync();
+            return await ctx.Cart!.ToListAsync();
         }
 
         public void Add(Cart entity)
         {
-            ctx.Carts?.Add(entity);
+            ctx.Cart?.Add(entity);
         }
 
         public async Task AddAsync(Cart entity)
         {
-            await ctx.Carts.AddAsync(entity);
+            await ctx.Cart.AddAsync(entity);
         }
 
         public void Update(Cart entity)
         {
-            ctx.Carts?.Update(entity);
+            ctx.Cart?.Update(entity);
         }
 
         public void DeleteById(Guid id)
         {
-            ctx.Carts?.Remove(GetById(id));
+            ctx.Cart?.Remove(GetById(id));
         }
 
         public void SaveChanges()
