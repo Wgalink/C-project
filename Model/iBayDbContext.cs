@@ -1,17 +1,28 @@
 using Microsoft.EntityFrameworkCore;
-using iBayProject.Models; // Remplacez ceci par votre espace de noms approprié
+using C-project.entities.models;
 
 namespace iBayProject.Data
 {
-    public class iBayDbContext : DbContext
+    public class DbContext(DbContextOptions options) : DbContext(options)
     {
-        public iBayDbContext(DbContextOptions<iBayDbContext> options)
-            : base(options)
-        {
-        }
+        public DbSet<Product>? Product { get; set; }
+        public DbSet<Cart>? Cart { get; set; }
+        public DbSet<User>? User { get; set; }
 
-        public DbSet<User> Users { get; set; }
-        public DbSet<Product> Products { get; set; }
-        // Ajoutez d'autres DbSet ici pour d'autres entités
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<User>()
+                .HasOne(c => c.Cart)
+                .WithOne(t => t.User)
+                .HasForeignKey<Cart>(t => t.UserId);
+
+            modelBuilder.Entity<Cart>()
+                .HasMany(c => c.Product)
+                .WithOne(s => s.Cart)
+                .HasForeignKey(s => s.CartId);
+
+            base.OnModelCreating(modelBuilder);
+        }
     }
 }
+

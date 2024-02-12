@@ -5,7 +5,7 @@ VisualStudioVersion = 17.5.002.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "iBay", "iBay", "{214EEA19-AF8F-4803-9FE6-1BA01FE70B1D}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "iBay", "iBay\iBay\iBay.csproj", "{E0A487B2-4DEF-4661-8C3E-02D24189B748}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "iBay", "iBay.csproj", "{E0A487B2-4DEF-4661-8C3E-02D24189B748}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
