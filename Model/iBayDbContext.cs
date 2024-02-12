@@ -1,5 +1,5 @@
 using Microsoft.EntityFrameworkCore;
-using C-project.entities.models;
+using Cproject.Entities.Models;
 
 namespace iBayProject.Data
 {

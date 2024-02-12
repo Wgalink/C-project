@@ -1,8 +1,8 @@
 using Microsoft.EntityFrameworkCore;
-using C-project.entities.models;
-using using C-project.entities.context;
+using Cproject.Entities.Models;
 
-namespace C-project.entities.service
+
+namespace Cproject.Entities.Services
 {
     public class CartService(DbContext ctx):IBasicService<Cart>
 

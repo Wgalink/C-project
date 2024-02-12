@@ -1,8 +1,8 @@
 using Microsoft.EntityFrameworkCore;
-using C-project.entities.models;
-using using C-project.entities.context;
+using Cproject.Entities.Models;
+using Cproject.Entities.Context;
 
-namespace C-project.entities.service
+namespace Cproject.Entities.Service
 {
     public class UserService(DbContext ctx):IBasicService<User>
 

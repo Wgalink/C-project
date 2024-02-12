@@ -1,6 +1,5 @@
 
-
-namespace C-project.WebApi.midlleware
+namespace Cproject.WebApi.Midlleware
 {
     public class JwtMiddleware
 {

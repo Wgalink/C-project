@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\BRUNY Weithniga\\Documents\\Supinfo\\C\\Project\\1\\iBay\\iBay\\iBay.csproj": {}
+    "C:\\Users\\user\\Documents\\Ludique\\project\\Achille\\Cproject\\iBay.csproj": {}
   },
   "projects": {
-    "C:\\Users\\BRUNY Weithniga\\Documents\\Supinfo\\C\\Project\\1\\iBay\\iBay\\iBay.csproj": {
+    "C:\\Users\\user\\Documents\\Ludique\\project\\Achille\\Cproject\\iBay.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\BRUNY Weithniga\\Documents\\Supinfo\\C\\Project\\1\\iBay\\iBay\\iBay.csproj",
+        "projectUniqueName": "C:\\Users\\user\\Documents\\Ludique\\project\\Achille\\Cproject\\iBay.csproj",
         "projectName": "iBay",
-        "projectPath": "C:\\Users\\BRUNY Weithniga\\Documents\\Supinfo\\C\\Project\\1\\iBay\\iBay\\iBay.csproj",
-        "packagesPath": "C:\\Users\\BRUNY Weithniga\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\BRUNY Weithniga\\Documents\\Supinfo\\C\\Project\\1\\iBay\\iBay\\obj\\",
+        "projectPath": "C:\\Users\\user\\Documents\\Ludique\\project\\Achille\\Cproject\\iBay.csproj",
+        "packagesPath": "C:\\Users\\user\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\user\\Documents\\Ludique\\project\\Achille\\Cproject\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\BRUNY Weithniga\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\user\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
@@ -80,7 +80,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.101/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

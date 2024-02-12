@@ -1,4 +1,4 @@
-namespace C-project.entities.models
+namespace Cproject.Entities.Models
 {
     public class User
     {

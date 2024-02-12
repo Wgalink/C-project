@@ -1,7 +1,6 @@
-[ApiController]
-using C-project.entities.models;
+using Cproject.Entities.Models;
 
-namespace C-project.WebApi.Controllers
+namespace Cproject.WebApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
