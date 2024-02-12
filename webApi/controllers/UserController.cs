@@ -23,18 +23,25 @@ namespace Cproject.WebApi.Controllers
         [HttpGet, Route("/users")]
         public ActionResult<IEnumerable<User>> GetUser()
         {
-            return Ok(1);
-            //return Ok(_userServ?.GetAll());
+            try{
+                return Ok(_userServ?.GetAll());
+            }catch(err){
+                res.status(500).json({ error: 'error system' })
+    }
+            }
         }
 
         // GET: api/users/5
         [HttpGet, Route("/users/{id}")]
         public ActionResult<User> GetUser(Guid id)
-        {
+        {try{
             var user = _userServ?.GetById(id);
             return user == null
                 ? NotFound()
                 : Ok(user);
+            }catch(err){
+                res.status(500).json({ error: 'error system' })
+    }
         }
 
         // PUT: api/users/5
@@ -73,7 +80,7 @@ namespace Cproject.WebApi.Controllers
             _userServ?.Add(user);
             _userServ?.SaveChanges();
 
-            return CreatedAtAction("GetUser", new { id = user.Id }, user);
+            return Ok(user);
         }
 
         // DELETE: api/users/5
