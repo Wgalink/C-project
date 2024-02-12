@@ -49,6 +49,11 @@ namespace Cproject.Entities.Services
             ctx.Cart?.Remove(GetById(id));
         }
 
+        public void Empty(Cart entity)
+        {
+            entity.Products = new List<Product>(); 
+        }
+
         public void SaveChanges()
         {
             ctx.SaveChanges();

@@ -4,6 +4,7 @@ using Cproject.Entities.Models;
 namespace Cproject.Context
 {
     public class iBayDbContext(DbContextOptions<iBayDbContext> options) : DbContext(options)
+    
     {
         public DbSet<Product>? Product { get; set; }
         public DbSet<Cart>? Cart { get; set; }
@@ -11,6 +12,9 @@ namespace Cproject.Context
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<User>().ToTable("User");
+            modelBuilder.Entity<Cart>().ToTable("Cart");
+            modelBuilder.Entity<Product>().ToTable("Product");
             modelBuilder.Entity<User>()
                 .HasOne(u => u.Cart)
                 .WithOne(c => c.User)
@@ -20,6 +24,17 @@ namespace Cproject.Context
                 .HasMany(c => c.Products)
                 .WithOne(p => p.Cart)
                 .HasForeignKey(p => p.CartId);
+
+            modelBuilder.Entity<User>().HasData(
+                new User
+                {
+                    Id = Guid.NewGuid(),
+                    Email = "test@test",
+                    Pseudo = "test",
+                    Password = "test",
+                    Role = "test",
+                }
+            );
 
             base.OnModelCreating(modelBuilder);
         }

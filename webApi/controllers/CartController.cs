@@ -36,43 +36,14 @@ namespace Cproject.WebApi.Controllers
                 : Ok(cart);
         }
 
-        // PUT: api/carts/5
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPut, Route("/carts/{id}")]
-        public IActionResult AddProduct(Guid id, Cart cart)
-        {
-            if (id != cart.Id)
-            {
-                return BadRequest();
-            }
-
-            try
-            {
-                _cartServ?.Update(cart);
-                _cartServ?.SaveChanges();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (_cartServ?.GetById(id) != null)
-                {
-                    return NotFound();
-                }
-
-                return BadRequest();
-            }
-
-            return NoContent();
-        }
-
         // POST: api/carts
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost, Route("/carts")]
-        public IActionResult PostCart(Cart cart)
+        public IActionResult PostCart(Cart cart, [FromQuery] Guid userId)
         {
             _cartServ?.Add(cart);
             _cartServ?.SaveChanges();
 
-            return CreatedAtAction("GetCart", new { id = cart.Id }, cart);
+            return Ok(cart);
         }
 
         // DELETE: api/carts/5
@@ -83,7 +54,23 @@ namespace Cproject.WebApi.Controllers
             {
                 _cartServ?.DeleteById(id);
                 _cartServ?.SaveChanges();
-                return NoContent();
+                return Ok();
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e);
+            }
+        }
+
+        // put: api/carts/empty
+        [HttpPut, Route("/carts/empty")]
+        public IActionResult EmptyCart(Cart cart) 
+        {
+            try
+            {
+                _cartServ?.Empty(cart);
+                _cartServ?.SaveChanges();
+                return Ok(cart);
             }
             catch (Exception e)
             {

@@ -1,4 +1,4 @@
-@iBay_HostAddress = http://localhost:5029
+@iBay_HostAddress = http://localhost:3306
 
 GET {{iBay_HostAddress}}/weatherforecast/
 Accept: application/json

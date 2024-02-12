@@ -1,18 +1,19 @@
 version: '3.1'
 
 services:
-  mariadb:
-    image: mariadb:latest
-    restart: always
+  mssql:
+    container_name: mssql-db
+    hostname: mssql-db
+    image: mcr.microsoft.com/mssql/server:2022-latest
     environment:
-      MYSQL_ROOT_PASSWORD: rootpassword
-      MYSQL_DATABASE: ibaydb
-      MYSQL_USER: ibayuser
-      MYSQL_PASSWORD: ibaypassword
+      ACCEPT_EULA: 'Y'
+      MSSQL_SA_PASSWORD: 'Passw0rd'
+      MSSQL_DATA_DIR: /var/opt/mssql/data
+      MSSQL_PID: 'Developer' 
+      MSSQL_TCP_PORT: 1433 
     ports:
-      - "3306:3306"
+    - "1433:1433"
     volumes:
-      - ibaydb:/var/lib/mysql
-
-volumes:
-  ibaydb:
+      - ./data:/var/opt/mssql/data
+      - ./log:/var/opt/mssql/log
+      - ./secrets:/var/opt/mssql/secrets

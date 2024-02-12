@@ -17,38 +17,34 @@ namespace Cproject.WebApi.Controllers
     {
 
         private readonly UserService? _userServ = new(ctx);
+        private readonly CartService? _cartServ = new(ctx);
 
 
         // GET: api/users
         [HttpGet, Route("/users")]
         public ActionResult<IEnumerable<User>> GetUser()
         {
-            try{
+            
                 return Ok(_userServ?.GetAll());
-            }catch(err){
-                res.status(500).json({ error: 'error system' })
-    }
-            }
+            
         }
 
         // GET: api/users/5
         [HttpGet, Route("/users/{id}")]
         public ActionResult<User> GetUser(Guid id)
-        {try{
+        {
             var user = _userServ?.GetById(id);
             return user == null
                 ? NotFound()
                 : Ok(user);
-            }catch(err){
-                res.status(500).json({ error: 'error system' })
+            
     }
-        }
 
         // PUT: api/users/5
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut, Route("/users/{id}")]
-        public IActionResult PutUser(Guid id, User user)
+        public IActionResult PutUser(Guid id)
         {
+            var user = _userServ?.GetById(id);
             if (id != user.Id)
             {
                 return BadRequest();
@@ -69,14 +65,50 @@ namespace Cproject.WebApi.Controllers
                 return BadRequest();
             }
 
-            return NoContent();
+            return Ok(user);
+        }
+
+
+        // PUT: api/users/seller
+        [HttpPut, Route("/users/seller/{id}")]
+        public IActionResult PutSeller(Guid id)
+        {
+            var user = _userServ?.GetById(id);
+            if (id != user.Id)
+            {
+                return BadRequest();
+            }
+
+            try
+            {
+                _userServ?.PassSeller(user);
+                _userServ?.SaveChanges();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (_userServ?.GetById(id) != null)
+                {
+                    return NotFound();
+                }
+
+                return BadRequest();
+            }
+
+            return Ok(user);
         }
 
         // POST: api/users
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost, Route("/users")]
         public IActionResult PostUser(User user)
         {
+            if (user.Cart == null){
+                Cart cart = new Cart {
+                    UserId = user.Id,
+                    User = user
+                };
+                _cartServ.Add(cart);
+                _cartServ.SaveChanges();
+            }
             _userServ?.Add(user);
             _userServ?.SaveChanges();
 
@@ -89,9 +121,14 @@ namespace Cproject.WebApi.Controllers
         {
             try
             {
+                var user = _userServ?.GetById(id);
+                if (id != user.Id)
+            {
+                return BadRequest();
+            }
                 _userServ?.DeleteById(id);
                 _userServ?.SaveChanges();
-                return NoContent();
+                return Ok(user);
             }
             catch (Exception e)
             {

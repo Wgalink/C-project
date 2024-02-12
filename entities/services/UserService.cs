@@ -56,5 +56,10 @@ namespace Cproject.Entities.Services
         {
             await ctx.SaveChangesAsync();
         }
+
+        public void PassSeller(User user) 
+        {
+            user.Role = "seller";
+        }
     }
 }

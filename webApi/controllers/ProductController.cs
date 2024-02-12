@@ -9,7 +9,6 @@ using Cproject.Entities.Services;
 using Cproject.Entities.Models;
 using Cproject.Context;
 
-
 namespace Cproject.WebApi.Controllers
 {
     [Route("api/[controller]")]
@@ -19,12 +18,21 @@ namespace Cproject.WebApi.Controllers
 
         private readonly ProductService? _productServ = new(ctx);
 
+        private readonly UserService? _userServ = new(ctx);
+
 
         // GET: api/products
         [HttpGet, Route("/product")]
         public ActionResult<IEnumerable<Product>> GetProduct()
         {
             return Ok(_productServ?.GetAll());
+        }
+
+        // GET: api/products
+        [HttpGet, Route("/product/{type}")]
+        public ActionResult<IEnumerable<Product>> GetProductBy(object type)
+        {
+            return Ok(_productServ?.GetAllBy(type));
         }
 
         // GET: api/products/5
@@ -37,12 +45,14 @@ namespace Cproject.WebApi.Controllers
                 : Ok(product);
         }
 
+        
         // PUT: api/products/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut, Route("/products/{id}")]
-        public IActionResult PutProduct(Guid id, Product product)
+        public IActionResult PutProduct(Guid id, [FromQuery] Guid userId)
         {
-            if (id != product.Id)
+            var product = _productServ?.GetById(id);
+            if (product.SellerId != userId)
             {
                 return BadRequest();
             }
@@ -62,29 +72,42 @@ namespace Cproject.WebApi.Controllers
                 return BadRequest();
             }
 
-            return NoContent();
+            return Ok(product);
         }
 
         // POST: api/products
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost, Route("/uProducts")]
-        public IActionResult PostProduct(Product product)
+        public IActionResult PostProduct(Product product, [FromQuery] Guid userId)
         {
+            var user = _userServ?.GetById(userId);
+            if (user.Role != "seller")
+            {
+                return BadRequest();
+            }
+             if(product.SellerId==null){
+                product.SellerId=userId;
+            }
             _productServ?.Add(product);
             _productServ?.SaveChanges();
 
-            return CreatedAtAction("GetProduct", new { id = product.Id }, product);
+            return Ok(product);
         }
 
         // DELETE: api/products/5
         [HttpDelete, Route("/products/{id}")]
-        public IActionResult DeleteProduct(Guid id)
+        public IActionResult DeleteProduct(Guid id,[FromQuery] Guid userId)
         {
             try
             {
+                var product = _productServ?.GetById(id);
+                if (product.SellerId != userId)
+                {
+                return BadRequest();
+                }
                 _productServ?.DeleteById(id);
                 _productServ?.SaveChanges();
-                return NoContent();
+                return Ok(product);
             }
             catch (Exception e)
             {
@@ -117,7 +140,7 @@ namespace Cproject.WebApi.Controllers
         user.Cart.Products.Add(product);
         ctx.SaveChanges();
 
-        return NoContent();
+        return Ok(product);
     }
     }
 }

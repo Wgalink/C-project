@@ -16,10 +16,14 @@ namespace Cproject.Entities.Services
         {
             return await ctx.Product.SingleOrDefaultAsync(t => t.Id == id);
         }
-
         public List<Product> GetAll()
         {
-            return ctx.Product!.ToList();
+            return ctx.Product!.OrderBy(AddedTime => AddedTime).ToList();
+        }
+
+        public List<Product> GetAllBy(object type)
+        {
+            return ctx.Product!.OrderBy(type => type).ToList();
         }
 
         public async Task<List<Product>> GetAllAsync()
