@@ -20,10 +20,11 @@ namespace Cproject.WebApi.Controllers
 
 
         // GET: api/users
-        [HttpGet, Route("/user")]
+        [HttpGet, Route("/users")]
         public ActionResult<IEnumerable<User>> GetUser()
         {
-            return Ok(_userServ?.GetAll());
+            return Ok(1);
+            //return Ok(_userServ?.GetAll());
         }
 
         // GET: api/users/5
